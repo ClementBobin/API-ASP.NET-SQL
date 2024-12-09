@@ -4,12 +4,16 @@ using Microsoft.EntityFrameworkCore;
 using System.Net.Http.Json;
 using Npgsql;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
+// Register DbContext with PostgreSQL
 builder.Services.AddDbContext<ChuckNorrisContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Register HttpClient
+builder.Services.AddHttpClient();
+
+// Add controllers and Swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -23,11 +27,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
+// Database seeding logic
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ChuckNorrisContext>();

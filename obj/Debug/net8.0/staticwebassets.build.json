@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "NUIspWbQHiHq3NLGdyEeeHlh1RIq/V4vUDw3rnc6ItI=",
+  "Source": "ChuckNorris.API",
+  "BasePath": "_content/ChuckNorris.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
